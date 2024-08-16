@@ -77,6 +77,11 @@ export default function ReportForm() {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="idNumber">Nomor KTP</Label>
+        <p className="text-xs text-slate-500">
+          Nomor KTP Anda akan diubah menjadi kode unik yang aman sebelum
+          disimpan di sistem kami. Kami tidak menyimpan nomor KTP Anda secara
+          langsung, sehingga privasi Anda tetap terjaga.
+        </p>
         <Input
           id="idNumber"
           type="text"
