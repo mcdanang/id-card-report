@@ -1,9 +1,12 @@
-// pages/api/submit-report.js
 import prisma from "../../lib/prisma";
 import crypto from "crypto";
 
+// Use a secret key for HMAC
+const SECRET_KEY = process.env.HMAC_SECRET_KEY || "your-secret-key";
+
+// Function to hash the ID number using HMAC
 function hashIdNumber(idNumber) {
-  return crypto.createHash("sha256").update(idNumber).digest("hex");
+  return crypto.createHmac("sha256", SECRET_KEY).update(idNumber).digest("hex");
 }
 
 export default async function handler(req, res) {
