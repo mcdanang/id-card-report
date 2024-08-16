@@ -84,12 +84,16 @@ export default function ReportForm() {
         </p>
         <Input
           id="idNumber"
-          type="text"
+          type="number"
           placeholder="Masukkan 16 digit Nomor KTP"
           value={idNumber}
           onChange={handleIdNumberChange}
+          onInput={(e) => {
+            if (e.target.value.length > 16) {
+              e.target.value = e.target.value.slice(0, 16);
+            }
+          }}
           required
-          maxLength={16}
         />
         {idNumberError && (
           <p className="text-red-500 text-sm">{idNumberError}</p>
