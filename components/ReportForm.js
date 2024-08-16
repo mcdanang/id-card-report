@@ -59,6 +59,17 @@ export default function ReportForm() {
         setIdNumber("");
         setName("");
         setDetails("");
+
+        // Prepare mailto link
+        const email =
+          "seknas@pbhi.or.id,hupmaskpudki@gmail.com,tatausaha@kpu.go.id";
+        const subject = "Laporan%20Penyalahgunaan%20KTP";
+        const mailtoLink = `mailto:${email}?subject=${subject}&body=Nomor%20KTP%3A%20${idNumber}%0ANama%3A%20${name}%0ADetail%20Laporan%3A%20${encodeURIComponent(
+          details
+        )}`;
+
+        // Open email client
+        window.location.href = mailtoLink;
       } else {
         throw new Error(data.error || "Terjadi kesalahan saat submit laporan");
       }
